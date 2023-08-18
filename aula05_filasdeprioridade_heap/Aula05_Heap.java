@@ -1,5 +1,6 @@
 package aula05_filasdeprioridade_heap;
 
+import aula03_analise_algoritmos_ordenacao.HeapSort;
 import utils.ArrayUtils;
 
 import java.util.Scanner;
@@ -11,18 +12,27 @@ public class Aula05_Heap {
         //exemplo2();
         //exemplo3();
         //exemplo4();
+        //exemploheapsort();
     }
     public static void TestarHeap() {
         Scanner teclado = new Scanner(System.in);
-        HeapMaximo h1 = new HeapMaximo(10);
+        HeapMaximo h1 = new HeapMaximo(5);
 
+        String schave;
         int chave;
-        System.out.println("Digite os valores a serem inseridos (0 para encerrar)");
+        System.out.println("Digite os valores a serem inseridos ('s' para encerrar ou 'r' para remover o maximo)");
         do {
-            chave = teclado.nextInt();
-            if(chave>0) h1.inserir(chave);
+            schave=teclado.nextLine();
+            if(schave.equals("r")) {
+                h1.removerMaximo();
+            }
+            else if(schave.matches("[0-9]+")){
+                chave = Integer.parseInt(schave);
+                h1.inserir(chave);
+            }
             ArrayUtils.imprimir(h1.getChaves());
-        }while(chave>0);
+            System.out.println("");
+        }while(!schave.equals("s"));
 
     }
     public static void exemplo1() {
@@ -48,18 +58,16 @@ public class Aula05_Heap {
         ArrayUtils.imprimir(h1.getChaves());
 
     }
-
     public static void exemplo2() {
         //gerando um heap-max a partir de um array, ou seja, convertendo o array em um heap
 
-        int[] meuArray = {0, 20, 35, 12, 77, 90, 15, 100};
+        int[] meuArray = {5, 20, 35, 12, 77, 90, 15, 100};
         ArrayUtils.imprimir(meuArray);
         HeapMaximo meuHeap = new HeapMaximo(meuArray);
         ArrayUtils.imprimir(meuHeap.getChaves());
         ArrayUtils.imprimir(meuHeap.getChaves());
 
     }
-
     public static void exemplo3() {
         //gerando um heap-max a partir de um array, ou seja, convertendo o array em um heap
 
@@ -71,7 +79,6 @@ public class Aula05_Heap {
         ArrayUtils.imprimirArvoreBinaria(meuHeap.getChaves());
 
     }
-
     public static void exemplo4() {
         //gerando um heap-max a partir de um array, ou seja, convertendo o array em um heap
 
@@ -81,4 +88,5 @@ public class Aula05_Heap {
         ArrayUtils.imprimir(meuHeap.getChaves());
 
     }
+
 }

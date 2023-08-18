@@ -1,11 +1,19 @@
 package aula03_analise_algoritmos_ordenacao;
 public class InsertionSort {
     private int operacoes;
+    private long tempoInicio;
+    private long tempoFim;
+    public long getTempoExecucao() {
+        long tempoExecucao = (tempoFim - tempoInicio) / 1_000  ;
+        return tempoExecucao;
+    }
     public int getOperacoes() {
         return operacoes;
     }
     public void ordenar(int[] arrayInteiros) {
         operacoes = 0;
+        tempoInicio = System.nanoTime();
+
         int tamanho = arrayInteiros.length;
         int chave;
         for (int j = 1; j < tamanho; j++) { //inicia no elemento 1
@@ -21,5 +29,7 @@ public class InsertionSort {
             operacoes++;
             arrayInteiros[i+1] = chave;
         }
+
+        tempoFim = System.nanoTime();
     }
 }

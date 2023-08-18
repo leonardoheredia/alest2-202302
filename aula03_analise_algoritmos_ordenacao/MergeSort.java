@@ -3,26 +3,30 @@ package aula03_analise_algoritmos_ordenacao;
 public class MergeSort {
     private int[] numbers;
     private int[] helper;
-
     private int number;
-
     private int operacoes;
+    private long tempoInicio;
+    private long tempoFim;
+    public long getTempoExecucao() {
+        long tempoExecucao = (tempoFim - tempoInicio) / 1_000  ;
+        return tempoExecucao;
+    }
 
     public int getOperacoes() {
         return operacoes;
     }
+    public void ordenar(int[] values) {
+        tempoInicio = System.nanoTime();
 
-
-    public int ordenar(int[] values) {
         operacoes = 0;
-
         this.numbers = values;
         number = values.length;
         this.helper = new int[number];
         mergesort(0, number - 1);
-        return this.operacoes;
-    }
 
+        tempoFim = System.nanoTime();
+
+    }
     private void mergesort(int low, int high) {
         // Check if low is smaller then high, if not then the array is sorted
         operacoes++;
@@ -37,7 +41,6 @@ public class MergeSort {
             merge(low, middle, high);
         }
     }
-
     private void merge(int low, int middle, int high) {
 
         // Copy both parts into the helper array
@@ -70,6 +73,4 @@ public class MergeSort {
             operacoes++;
         }
     }
-
-
 }
