@@ -1,6 +1,5 @@
 package aula05_filasdeprioridade_heap;
 
-import aula03_analise_algoritmos_ordenacao.HeapSort;
 import utils.ArrayUtils;
 
 import java.util.Scanner;

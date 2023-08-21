@@ -1,4 +1,4 @@
-package aula03_analise_algoritmos_ordenacao;
+package aula06_heapsort;
 
 import aula05_filasdeprioridade_heap.HeapMaximo;
 import utils.ArrayUtils;

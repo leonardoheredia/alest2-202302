@@ -1,8 +1,7 @@
 package aula03_analise_algoritmos_ordenacao;
 
+import aula06_heapsort.HeapSort;
 import utils.ArrayUtils;
-
-import java.lang.reflect.Array;
 
 public class AnaliseOrdenacao {
 
