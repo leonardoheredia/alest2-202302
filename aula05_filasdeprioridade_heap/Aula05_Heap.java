@@ -6,12 +6,21 @@ import java.util.Scanner;
 
 public class Aula05_Heap {
     public static void main(String[] args) {
-        TestarHeap();
+        //TestarHeap();
         //exemplo1();
         //exemplo2();
         //exemplo3();
         //exemplo4();
         //exemploheapsort();
+        gerarHeap();
+    }
+    public static void gerarHeap() {
+        int[] a = {15, 23, 14, 30, 12, 18};
+        ArrayUtils.imprimir(a);
+        HeapMaximo hm = new HeapMaximo(a);
+        ArrayUtils.imprimir(a);
+
+
     }
     public static void TestarHeap() {
         Scanner teclado = new Scanner(System.in);

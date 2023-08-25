@@ -11,10 +11,10 @@ public class AnaliseOrdenacao {
         int[] arrayMerge;
         int[] arrayQuick;
         int[] arrayHeap;
-        int TAM_MAXIMO = 500_000;
+        int TAM_MAXIMO = 1_000_000;
 
         System.out.println("n;bubble op;insertion op;merge op;quick op;heap op;bubble t;insertion t;merge t;quick t;heap t");
-        for (int n = 10; n <= TAM_MAXIMO ; n+=500) {
+        for (int n = 10; n <= TAM_MAXIMO ; n+=1_500) {
             arrayBubble = new int[n];
             arrayInsertion = new int[n];
             arrayMerge = new int[n];
