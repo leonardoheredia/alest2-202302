@@ -1,23 +1,20 @@
-package aula_07_tabelas_hash;
+package aula08_exercicios_tabelas_hash;
+
 
 import utils.ArrayUtils;
 
 import java.util.Scanner;
 
 public class TabelaHashEnderecamentoAberto {
-    private int capacidade; //capacidade nos nossos slides seria o m
+    private int capacidade; //capacidade nos nossos slides seria o m-1
     private int quantidade; //quantidade de chaves validas na nossa tabela
-
     private int[] tabela;
-
     public int[] getTabela() {
         return tabela;
     }
-
     public int getQuantidade() {
         return quantidade;
     }
-
     public TabelaHashEnderecamentoAberto(int capacidade) {
         this.capacidade = capacidade;
         tabela = new int[capacidade];
@@ -25,7 +22,6 @@ public class TabelaHashEnderecamentoAberto {
             tabela[i] = -1; //-1 seria um valor invalido na tabela hash indicando que a posicao esta vazia
         }
     }
-
     public void inserir(int chave) {
         int hash  = funcaoHashing(chave);
         System.out.printf("%nhash(%d) = %d", chave, hash);
@@ -33,6 +29,11 @@ public class TabelaHashEnderecamentoAberto {
             tabela[hash] = chave;
             quantidade++;
             System.out.printf("%nInseriu a chave %d na posição %d", chave, hash);
+        }
+        else if (tabela[hash] == chave) {
+            System.out.println();
+            System.out.println("Ja existe essa chave! Caindo fora!!!!");
+            return;
         }
         else {
             System.out.printf("%n*** COLISÃO NA POSIÇÃO  %d.", hash);
@@ -43,6 +44,11 @@ public class TabelaHashEnderecamentoAberto {
                 if(proxima_posicao==this.capacidade) { //chegou no final
                     System.out.printf("%nOps! Cheguei no final %d e não achei nada livre. Vou recomecar desde o início para ver se tenho mais sorte", proxima_posicao);
                     proxima_posicao = 0; //recomeca do zero
+                }
+                else if(tabela[proxima_posicao]==chave) {
+                    System.out.println();
+                    System.out.println("CHAVE JA EXISTE, POR FAVOR CAI FORA!");
+                    break;
                 }
                 else if(tabela[proxima_posicao] == -1) {
                     System.out.printf("%nOba! A posição %d estava livre. Vou inserir %d na posição %d.", proxima_posicao, chave, proxima_posicao);
@@ -56,33 +62,32 @@ public class TabelaHashEnderecamentoAberto {
                     System.out.printf("%n Oh não!! Já tentei tudo e não achei lugar! Isso significa que a tabela hash esta lotada! O que farei??? ");
                     System.out.printf("%n Tenho que fazer um resize duplicando o m e colocando novamente todas as chaves");
                     duplicarTabela();
+                    inserir(chave);
                     break;
                 }
             }
 
         }
     }
-
     public void duplicarTabela() {
         int[] tabelaTemporaria = new int[capacidade];
         for (int i = 0; i < capacidade; i++) {
-            tabelaTemporaria[i] = tabela[i];
+            tabelaTemporaria[i] = this.tabela[i];
         }
         //duplica a capacidade da tabela hash
         this.capacidade = this.capacidade * 2;
-        tabela = new int[capacidade];
+        this.tabela = new int[capacidade];
         for (int i = 0; i < tabela.length; i++) {
             tabela[i] = -1;
         }
+        this.quantidade = 0;
         for (int i = 0; i < tabelaTemporaria.length; i++) {
             inserir(tabelaTemporaria[i]);
         }
-
     }
     public int funcaoHashing(int chave) {
         return chave % this.capacidade;
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.printf("%nExemplo de tabela hashing");
