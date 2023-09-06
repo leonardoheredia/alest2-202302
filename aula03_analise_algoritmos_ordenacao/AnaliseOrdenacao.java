@@ -11,10 +11,10 @@ public class AnaliseOrdenacao {
         int[] arrayMerge;
         int[] arrayQuick;
         int[] arrayHeap;
-        int TAM_MAXIMO = 1_000_000;
+        int TAM_MAXIMO = 100_000;
 
         System.out.println("n;bubble op;insertion op;merge op;quick op;heap op;bubble t;insertion t;merge t;quick t;heap t");
-        for (int n = 10; n <= TAM_MAXIMO ; n+=1_500) {
+        for (int n = 1000; n <= TAM_MAXIMO ; n+=1000) {
             arrayBubble = new int[n];
             arrayInsertion = new int[n];
             arrayMerge = new int[n];
@@ -28,19 +28,19 @@ public class AnaliseOrdenacao {
             ArrayUtils.clonarArray(arrayBubble, arrayHeap);
 
             BubbleSort bs = new BubbleSort();
-            //bs.ordenar(arrayBubble);
+            bs.ordenar(arrayBubble);
 
             InsertionSort is = new InsertionSort();
             //is.ordenar(arrayInsertion);
 
             MergeSort ms = new MergeSort();
-            ms.ordenar(arrayMerge);
+            //ms.ordenar(arrayMerge);
 
             QuickSort qs = new QuickSort();
-            qs.ordenar(arrayQuick);
+            //qs.ordenar(arrayQuick);
 
             HeapSort hs = new HeapSort();
-            hs.ordenar(arrayHeap);
+            //hs.ordenar(arrayHeap);
 
             System.out.println(n + ";"
                     + bs.getOperacoes()
