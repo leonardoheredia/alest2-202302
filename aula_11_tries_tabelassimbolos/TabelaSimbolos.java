@@ -34,12 +34,10 @@ public class TabelaSimbolos<Chave, Valor> {
         }
     }
     public boolean contem(Chave chave) {
-        //IMPLEMENTAR
-        return false;
+        return (buscar(chave)!=null);
     }
     public boolean vazia() {
-        //IMPLEMENTAR
-        return false;
+        return (inicio==null);
     }
 
 
