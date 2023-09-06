@@ -33,5 +33,14 @@ public class TabelaSimbolos<Chave, Valor> {
             System.out.println(n.chave + " - " + n.valor);
         }
     }
+    public boolean contem(Chave chave) {
+        //IMPLEMENTAR
+        return false;
+    }
+    public boolean vazia() {
+        //IMPLEMENTAR
+        return false;
+    }
+
 
 }
