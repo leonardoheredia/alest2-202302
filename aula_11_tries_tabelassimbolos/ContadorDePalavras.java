@@ -24,6 +24,6 @@ public class ContadorDePalavras {
                 }
             }
         }
-        System.out.println(tabelaPalavras);
+        tabelaPalavras.imprimir();
     }
 }
