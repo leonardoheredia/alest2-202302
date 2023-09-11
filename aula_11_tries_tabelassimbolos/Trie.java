@@ -71,9 +71,7 @@ public class Trie {
         System.out.println(t.contem("JAT"));
         System.out.println(t.contem("JATO"));
 
-        for (int i = 0; i < t.quantidade; i++) {
 
-        }
     }
 
 }
