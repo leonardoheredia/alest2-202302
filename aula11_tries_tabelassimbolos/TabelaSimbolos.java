@@ -1,4 +1,4 @@
-package aula_11_tries_tabelassimbolos;
+package aula11_tries_tabelassimbolos;
 
 public class TabelaSimbolos<Chave, Valor> {
     private class Nodo {

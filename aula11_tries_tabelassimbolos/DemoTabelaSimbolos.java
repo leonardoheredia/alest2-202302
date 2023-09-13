@@ -1,4 +1,4 @@
-package aula_11_tries_tabelassimbolos;
+package aula11_tries_tabelassimbolos;
 
 public class DemoTabelaSimbolos {
     public static void main(String[] args) {

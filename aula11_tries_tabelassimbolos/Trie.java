@@ -1,7 +1,4 @@
-package aula_11_tries_tabelassimbolos;
-
-import java.util.LinkedList;
-import java.util.Queue;
+package aula11_tries_tabelassimbolos;
 
 public class Trie {
     private static final int TAMANHO_ALFABETO = 26;        //apenas letras maiusculas
@@ -57,7 +54,22 @@ public class Trie {
 
     }
     public void imprimir() {
-        //IMPLEMENTAR EM AULA
+        Nodo aux = this.raiz;
+        System.out.println();
+        imprimirNodo(aux);
+    }
+
+    private void imprimirNodo(Nodo n) {
+        if (n.proximo == null) {
+            System.out.println();
+            return;
+        }
+        for (int i = 0; i < n.proximo.length; i++) {
+            if (n.proximo[i] != null) {
+                System.out.printf("%s", n.proximo[i].valor);
+                imprimirNodo(n.proximo[i]);
+            }
+        }
     }
 
     public static void main(String[] args) {

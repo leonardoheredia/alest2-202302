@@ -1,4 +1,4 @@
-package aula_11_tries_tabelassimbolos;
+package aula11_tries_tabelassimbolos;
 
 import java.io.File;
 import java.io.FileNotFoundException;
