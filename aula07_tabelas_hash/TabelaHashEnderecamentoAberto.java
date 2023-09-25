@@ -81,7 +81,27 @@ public class TabelaHashEnderecamentoAberto {
     public int funcaoHashing(int chave) {
         return chave % this.capacidade;
     }
-
+    public int buscar(int chave) {
+        int hash = funcaoHashing(chave);
+        int sondagens = 0;
+        if (tabela[hash] == -1) {
+            return -1;
+        } else if (chave == tabela[hash]) {
+            return hash; //achou a chave
+        } else {
+            int posicao_original = hash;
+            int proxima_posicao = hash + 1;
+            while (true) {  // percorre a tabela até achar a chave ou achar uma posição vazia
+                if (proxima_posicao == this.capacidade) proxima_posicao = 0;
+                if (chave == tabela[proxima_posicao]) { //achou
+                    return hash;
+                }
+                proxima_posicao++;
+                if (tabela[proxima_posicao] == -1 || proxima_posicao == posicao_original)
+                    return -1; //se encontrar uma posição vazia ou tiver percorrido tudo e não achado a chave entao retorna -1
+            }
+        }
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.printf("%nExemplo de tabela hashing");
