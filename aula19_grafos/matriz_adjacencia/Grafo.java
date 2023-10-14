@@ -10,7 +10,9 @@ public class Grafo {
     public void adicionarAresta(int v, int w) {
         matriz[v][w] = true;
         matriz[w][v] = true;
+
     }
+
     public void imprimirMatriz() {
         String str="  |";
         for (int i = 0; i < vertices; i++) {
@@ -20,11 +22,12 @@ public class Grafo {
         for (int i = 0; i < vertices; i++) {
             String linha = i + " |";
             for (int j = 0; j < vertices; j++) {
-                linha += matriz[i][j] + "|";
+                linha += ((matriz[i][j]) ? "true " : "false") + "|";
             }
             System.out.println(linha);
         }
     }
+
     public String toDot() {
         String resultado = "graph G { " + System.lineSeparator();
         for (int i = 0; i < vertices; i++) {
@@ -41,3 +44,4 @@ public class Grafo {
         return resultado;
     }
 }
+

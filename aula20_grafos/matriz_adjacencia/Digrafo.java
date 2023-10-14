@@ -8,23 +8,36 @@ public class Digrafo {
         matriz = new boolean[this.vertices][this.vertices];
     }
     public void adicionarAresta(int v, int w) {
-        //implementar
+        matriz[v][w] = true;
     }
     public int getArestas() {
-        //IMPLEMENTAR
-        return 0;
+        int arestas = 0;
+        for (int l = 0; l < vertices; l++)
+            for(int c=0; c<vertices; c++)
+                if(matriz[l][c]) arestas++;
+        return arestas;
     }
     public boolean existeAresta(int v, int w) {
-        //IMPLEMENTAR
-        return false;
+        return matriz[v][w];
     }
     public void removerAresta(int v, int w) {
-        //IMPLEMENTAR
+        matriz[v][w] = false;
     }
-    public int grau(int v) {
-        //IMPLEMENTAR
-        return 0;
+    public int grauSaida(int v) {
+        int grauS = 0;
+        for(int c=0; c<vertices; c++) {
+            if(matriz[v][c]) grauS++;
+        }
+        return grauS;
     }
+    public int grauEntrada(int v) {
+        int grauE = 0;
+        for(int l=0; l<vertices; l++) {
+            if(matriz[l][v]) grauE++;
+        }
+        return grauE;
+    }
+    public int getVertices() { return this.vertices; }
     public void imprimirMatriz() {
         String str="  |";
         for (int i = 0; i < vertices; i++) {
@@ -46,9 +59,8 @@ public class Digrafo {
         }
         for (int i = 0; i < vertices; i++) {
             for (int j = i; j < vertices; j++) {
-                if(matriz[i][j]) {
-                    resultado += "\t" + i + "->" + j + ";" + System.lineSeparator();
-                }
+                if(matriz[i][j]) resultado += "\t" + i + "->" + j + ";" + System.lineSeparator();
+                if(matriz[j][i] && j!=i) resultado += "\t" + j + "->" + i + ";" + System.lineSeparator();
             }
         }
         resultado += "}";

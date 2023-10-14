@@ -12,19 +12,31 @@ public class Grafo {
         matriz[w][v] = true;
     }
     public int getArestas() {
-        //IMPLEMENTAR
-        return 0;
+        int arestas = 0;
+        for(int l = 0;l<vertices;l++) {
+            for(int c=l;c<vertices;c++) {
+                if(matriz[l][c]) arestas++;
+            }
+        }
+        return arestas;
     }
     public boolean existeAresta(int v, int w) {
-        //IMPLEMENTAR
-        return false;
+        return matriz[v][w];
     }
     public void removerAresta(int v, int w) {
-        //IMPLEMENTAR
+        matriz[v][w] = false;
+        matriz[w][v] = false;
     }
     public int grau(int v) {
-        //IMPLEMENTAR
-        return 0;
+        int g = 0;
+        for (int c = 0; c < vertices; c++) {
+            if(matriz[v][c]) g++;
+        }
+        return g;
+    }
+
+    public int getVertices() {
+        return this.vertices;
     }
     public void imprimirMatriz() {
         String str="  |";
