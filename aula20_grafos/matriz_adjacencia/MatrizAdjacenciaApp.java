@@ -1,5 +1,8 @@
 package aula20_grafos.matriz_adjacencia;
 
+import aula20_grafos.matriz_adjacencia.Digrafo;
+import aula20_grafos.matriz_adjacencia.Grafo;
+
 public class MatrizAdjacenciaApp {
     public static void main(String[] args) {
         //exemploGrafo();
