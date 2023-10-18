@@ -12,6 +12,7 @@ public class AppCaminhamento {
 
         BuscaEmProfundidade bp = new BuscaEmProfundidade(g, 0);
         System.out.println(bp.getCaminhos());
+        BuscaEmLargura bl = new BuscaEmLargura(g,0);
 
     }
 }
