@@ -1,0 +1,56 @@
+package aula24_ordenacaotopo_valorado;
+
+import java.util.ArrayList;
+
+public class GrafoValoradoNaoDirecionado {
+    class Aresta {
+        int origem;
+        int destino;
+        int peso;
+        public Aresta(int origem, int destino, int peso) {
+            this.origem = origem;
+            this.destino = destino;
+            this.peso = peso;
+        }
+    }
+    private int vertices;
+    private ArrayList<Aresta>[] listaAdjacencia;
+    public GrafoValoradoNaoDirecionado(int vertices) {
+        this.vertices = vertices;
+        listaAdjacencia = new ArrayList[this.vertices];
+        for (int i = 0; i < this.vertices ; i++) {
+            listaAdjacencia[i] = new ArrayList<Aresta>();
+        }
+    }
+    public void adicionarAresta(int origem, int destino, int peso) {
+        Aresta a = new Aresta(origem, destino, peso);
+        listaAdjacencia[origem].add(a);
+
+    }
+
+    //implementar getArestas()
+    //implementar removerAresta()
+    //implementar getPeso(origem, destino)
+    //implementar BUSCAEMPRFUNDIDADE!
+    //implementar BUSCAEMLARGURA (calculando o total do caminho)
+    public String toDot() {
+        String resultado = "graph G { " + System.lineSeparator();
+        for (int i = 0; i < this.vertices; i++) {
+            resultado = resultado + "\t" + i + ";" + System.lineSeparator();
+        }
+        boolean[][] jaImpresso = new boolean[vertices][vertices];
+        for (int i = 0; i < vertices; i++) {
+            for (int j = 0; j < listaAdjacencia[i].size(); j++) {
+                if(!jaImpresso[i][j]) {
+                    resultado += "\t" + listaAdjacencia[i].get(j).origem + "--" + listaAdjacencia[i].get(j).destino+ "  [label=" + listaAdjacencia[i].get(j).peso + "]" + ";" + System.lineSeparator();
+                    jaImpresso[listaAdjacencia[i].get(j).origem][listaAdjacencia[i].get(j).origem] = true;
+                    jaImpresso[listaAdjacencia[i].get(j).destino][listaAdjacencia[i].get(j).destino] = true;
+                }
+            }
+        }
+        resultado += "}";
+        return resultado;
+    }
+}
+
+
