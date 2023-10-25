@@ -14,6 +14,7 @@ public class GrafoValoradoNaoDirecionado {
         }
     }
     private int vertices;
+    private int arestas;
     private ArrayList<Aresta>[] listaAdjacencia;
     public GrafoValoradoNaoDirecionado(int vertices) {
         this.vertices = vertices;
@@ -23,15 +24,21 @@ public class GrafoValoradoNaoDirecionado {
         }
     }
     public void adicionarAresta(int origem, int destino, int peso) {
-        Aresta a = new Aresta(origem, destino, peso);
-        listaAdjacencia[origem].add(a);
-
+        Aresta a1 = new Aresta(origem, destino, peso);
+        listaAdjacencia[origem].add(a1);
+        Aresta a2 = new Aresta(destino, origem, peso);
+        listaAdjacencia[destino].add(a2);
+        arestas++;
+    }
+    public ArrayList<Aresta> adjacentes(int vertice) {
+        ArrayList<Aresta> l = (ArrayList<Aresta>) listaAdjacencia[vertice].clone();
+        return l;
     }
 
     //implementar getArestas()
     //implementar removerAresta()
     //implementar getPeso(origem, destino)
-    //implementar BUSCAEMPRFUNDIDADE!
+    //implementar BUSCAEMPROFUNDIDADE!
     //implementar BUSCAEMLARGURA (calculando o total do caminho)
     public String toDot() {
         String resultado = "graph G { " + System.lineSeparator();
