@@ -1,7 +1,5 @@
 package aula25_grafovaloradocompleto_mst;
 
-import java.util.ArrayList;
-
 public class AppGrafoValorado {
     public static void main(String[] args) {
         GrafoValorado g = new GrafoValorado(5);

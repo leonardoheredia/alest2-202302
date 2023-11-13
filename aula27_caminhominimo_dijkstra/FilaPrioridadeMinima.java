@@ -19,14 +19,24 @@ public class FilaPrioridadeMinima {
     }
     public void enfileirar(int vertice, int distancia) {
         Nodo n = new Nodo(vertice, distancia);
-        //IMPLEMENTAR
+        itens.add(n);
     }
     public boolean estaVazia() {
         return itens.isEmpty();
     }
     public int desenfileirar() {
-        //IMPLEMENTAR
-        return -1;
+        if(itens.isEmpty()) return -1;
+        Nodo menorDistancia = new Nodo(-1, Integer.MAX_VALUE);
+
+        for (int i = 0; i < itens.size(); i++) {
+            Nodo n = itens.get(i);
+            if(n.distancia<menorDistancia.distancia) {
+                menorDistancia = n;
+            }
+        }
+        int vertice = menorDistancia.vertice;
+        itens.remove(menorDistancia);
+        return vertice;
     }
     public boolean existe(int vertice) {
         return obterNodo(vertice)!=null;

@@ -11,8 +11,8 @@ public class AppDijkstra {
         g.adicionarAresta(3,4,34);
         System.out.println(g.toDot());
 
-        //Dijkstra d = new Dijkstra(g, 0);
-        //d.imprimirResultado();
+        Dijkstra d = new Dijkstra(g, 0);
+        d.imprimirResultado();
 
 
     }
